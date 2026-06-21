@@ -26,7 +26,7 @@ public final class CosmicArmorMaterial {
 
     public static final Holder<ArmorMaterial> COSMIC = Holder.direct(new ArmorMaterial(
             // 1) defense points per piece
-            createDefenseMap(3, 8, 6, 3),
+            createDefenseMap(3, 9, 7, 3),
             // 2) enchantmentValue
             12,
             // 3) equipSound (already a Holder<SoundEvent> in 1.21.1)
@@ -37,7 +37,7 @@ public final class CosmicArmorMaterial {
             List.of(new ArmorMaterial.Layer(
                     ResourceLocation.fromNamespaceAndPath(AlienInvasionMod.MODID, "cosmic"))),
             // 6) toughness
-            2.5F,
+            3.5F,
             // 7) knockbackResistance
             0.1F
     ));

@@ -12,14 +12,14 @@ import java.util.List;
 import java.util.Map;
 
 public class AlienChemArmorMaterial {
-    public static final int BASE_DURABILITY = 20; // iron-level durability
+    public static final int BASE_DURABILITY = 37; // netherite-level durability
 
     public static final Holder<ArmorMaterial> ALIEN_CHEM = Holder.direct(new ArmorMaterial(
             Map.of(
-                    net.minecraft.world.item.ArmorItem.Type.HELMET,     2,
-                    net.minecraft.world.item.ArmorItem.Type.CHESTPLATE, 6,
-                    net.minecraft.world.item.ArmorItem.Type.LEGGINGS,   5,
-                    net.minecraft.world.item.ArmorItem.Type.BOOTS,      2
+                    net.minecraft.world.item.ArmorItem.Type.HELMET,     3,
+                    net.minecraft.world.item.ArmorItem.Type.CHESTPLATE, 8,
+                    net.minecraft.world.item.ArmorItem.Type.LEGGINGS,   6,
+                    net.minecraft.world.item.ArmorItem.Type.BOOTS,      3
             ),
             9,
             SoundEvents.ARMOR_EQUIP_IRON,
@@ -27,7 +27,7 @@ public class AlienChemArmorMaterial {
             List.of(new ArmorMaterial.Layer(
                     ResourceLocation.fromNamespaceAndPath(AlienInvasionMod.MODID, "alien_chem")
             )),
-            1.0F,
-            0.0F
+            3.0F,
+            0.1F
     ));
 }

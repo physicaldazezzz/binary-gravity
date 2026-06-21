@@ -14,16 +14,16 @@ import java.util.List;
 import java.util.Map;
 
 public final class EmeradiumArmorMaterial {
-    public static final int BASE_DURABILITY = 32;
+    public static final int BASE_DURABILITY = 43;
 
     public static final Holder<ArmorMaterial> EMERADIUM = Holder.direct(new ArmorMaterial(
-            createDefenseMap(3, 8, 6, 3),
+            createDefenseMap(4, 9, 8, 4),
             15,
             SoundEvents.ARMOR_EQUIP_DIAMOND,
             () -> Ingredient.of(ItemRegistry.EMERADIUM_INGOT),
             List.of(new ArmorMaterial.Layer(
                     ResourceLocation.fromNamespaceAndPath(AlienInvasionMod.MODID, "emeradium"))),
-            2.0F,
+            3.5F,
             0.05F
     ));
 

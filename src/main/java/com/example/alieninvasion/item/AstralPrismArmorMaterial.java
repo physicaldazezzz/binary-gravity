@@ -15,16 +15,16 @@ import java.util.Map;
 
 public final class AstralPrismArmorMaterial {
 
-    public static final int BASE_DURABILITY = 35;
+    public static final int BASE_DURABILITY = 40;
 
     public static final Holder<ArmorMaterial> ASTRAL_PRISM = Holder.direct(new ArmorMaterial(
-            createDefenseMap(4, 9, 7, 4),
+            createDefenseMap(3, 9, 7, 3),
             15,
             SoundEvents.ARMOR_EQUIP_DIAMOND,
             () -> Ingredient.of(ItemRegistry.ASTRAL_PRISM_INGOT),
             List.of(new ArmorMaterial.Layer(
                     ResourceLocation.fromNamespaceAndPath(AlienInvasionMod.MODID, "astral_prism"))),
-            3.0F,
+            4.0F,
             0.1F
     ));
 

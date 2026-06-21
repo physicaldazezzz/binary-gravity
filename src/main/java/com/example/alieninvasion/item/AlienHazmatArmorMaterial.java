@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 public class AlienHazmatArmorMaterial {
-    public static final int BASE_DURABILITY = 13; // leather-level durability
+    public static final int BASE_DURABILITY = 5; // leather-level durability
 
     public static final Holder<ArmorMaterial> ALIEN_HAZMAT = Holder.direct(new ArmorMaterial(
             Map.of(
@@ -27,7 +27,7 @@ public class AlienHazmatArmorMaterial {
             List.of(new ArmorMaterial.Layer(
                     ResourceLocation.fromNamespaceAndPath(AlienInvasionMod.MODID, "alien_hazmat")
             )),
-            0.0F,
+            3.0F,
             0.0F
     ));
 }
