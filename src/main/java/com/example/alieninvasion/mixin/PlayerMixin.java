@@ -144,6 +144,63 @@ public class PlayerMixin implements com.example.alieninvasion.logic.InfectionTra
     @Inject(method = "eat", at = @At("TAIL"))
     private void adjustNutrition(Level level, ItemStack itemStack, FoodProperties foodProperties, CallbackInfoReturnable<ItemStack> cir) {
         Player player = (Player) (Object) this;
+
+        if (!level.isClientSide) {
+            net.minecraft.world.item.Item item = itemStack.getItem();
+            if (item == net.minecraft.world.item.Items.GOLDEN_APPLE ||
+                item == net.minecraft.world.item.Items.ENCHANTED_GOLDEN_APPLE ||
+                item == net.minecraft.world.item.Items.GOLDEN_CARROT) {
+                
+                float reducePercent = 0.0F;
+                if (item == net.minecraft.world.item.Items.GOLDEN_APPLE) {
+                    reducePercent = 50.0F;
+                } else if (item == net.minecraft.world.item.Items.ENCHANTED_GOLDEN_APPLE) {
+                    reducePercent = 100.0F;
+                } else if (item == net.minecraft.world.item.Items.GOLDEN_CARROT) {
+                    reducePercent = 8.0F;
+                }
+
+                // Apply Radiation reduction
+                if (reducePercent >= 100.0F) {
+                    com.example.alieninvasion.logic.RadiationManager.clearDose(player);
+                } else {
+                    com.example.alieninvasion.logic.RadiationManager.reduceDose(player, reducePercent);
+                    com.example.alieninvasion.logic.RadiationManager.reduceHealthDrain(player, 16.0F * (reducePercent / 100.0F));
+                }
+
+                // Apply Infection reduction
+                float currentMeter = com.example.alieninvasion.logic.InfectionManager.getMeter(player);
+                float newMeter = Math.max(0.0F, currentMeter - reducePercent);
+
+                if (newMeter <= 0.01F) {
+                    player.addTag("CuredByAntidote");
+                    com.example.alieninvasion.logic.InfectionManager.clear(player);
+                    player.removeEffect(BuiltInRegistries.MOB_EFFECT.wrapAsHolder(ModEffects.INFECTION));
+                } else {
+                    com.example.alieninvasion.logic.InfectionManager.reduceMeter(player, reducePercent);
+                    
+                    int newStage = newMeter >= 75.0F ? 3 : newMeter >= 50.0F ? 2 : newMeter >= 25.0F ? 1 : 0;
+                    if (newStage == 0) {
+                        player.addTag("CuredByAntidote");
+                        com.example.alieninvasion.logic.InfectionManager.clear(player);
+                        player.removeEffect(BuiltInRegistries.MOB_EFFECT.wrapAsHolder(ModEffects.INFECTION));
+                    } else {
+                        int amp = newStage - 1;
+                        player.removeEffect(BuiltInRegistries.MOB_EFFECT.wrapAsHolder(ModEffects.INFECTION));
+                        player.addEffect(new net.minecraft.world.effect.MobEffectInstance(
+                                BuiltInRegistries.MOB_EFFECT.wrapAsHolder(ModEffects.INFECTION), 72000, amp, false, true));
+                        
+                        this.alien_prevInfectionStage = newStage;
+                        this.alien_infectionTicks = 0;
+                        
+                        if (newStage < 2) {
+                            alien_removeHealthModifier(player);
+                        }
+                    }
+                }
+            }
+        }
+
         if (player.hasEffect(BuiltInRegistries.MOB_EFFECT.wrapAsHolder(ModEffects.INFECTION))) {
             var effect = player.getEffect(BuiltInRegistries.MOB_EFFECT.wrapAsHolder(ModEffects.INFECTION));
             if (effect != null && effect.getAmplifier() >= 1) { // Stage 2 Mutation or Stage 3 Assimilation

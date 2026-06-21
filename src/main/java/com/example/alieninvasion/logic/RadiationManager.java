@@ -80,6 +80,23 @@ public final class RadiationManager {
         setDose(player.getUUID(), getDose(player) - amount);
     }
 
+    public static void reduceHealthDrain(Player player, float amount) {
+        UUID id = player.getUUID();
+        float current = HEALTH_DRAIN.getOrDefault(id, 0.0F);
+        float next = Math.max(0.0F, current - amount);
+        if (next <= 0.01F) {
+            HEALTH_DRAIN.remove(id);
+            if (player instanceof ServerPlayer sp) {
+                removeHealthDrain(sp);
+            }
+        } else {
+            HEALTH_DRAIN.put(id, next);
+            if (player instanceof ServerPlayer sp) {
+                applyHealthDrain(sp, id);
+            }
+        }
+    }
+
     public static void clearDose(Player player) {
         UUID id = player.getUUID();
         DOSE.remove(id);
