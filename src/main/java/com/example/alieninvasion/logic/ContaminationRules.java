@@ -273,20 +273,6 @@ public final class ContaminationRules {
      * ore yet.
      */
     public static BlockState oreConversionFor(BlockState state, int day) {
-        if (day >= 2) {
-            if (state.is(BlockTags.COAL_ORES)) return ModBlocks.PLATINUM_ORE.defaultBlockState();
-            if (state.is(BlockTags.COPPER_ORES)) return ModBlocks.PALLADIUM_ORE.defaultBlockState();
-        }
-        if (day >= 3) {
-            if (state.is(BlockTags.GOLD_ORES)) return ModBlocks.PURE_RADIATION_BLOCK.defaultBlockState();
-        }
-        if (day >= 4) {
-            if (state.is(BlockTags.LAPIS_ORES)) return ModBlocks.COSMIC_CRYSTAL_ORE.defaultBlockState();
-        }
-        if (day >= 4) {
-            if (state.is(BlockTags.DIAMOND_ORES)) return ModBlocks.INFESTED_DIAMOND_ORE.defaultBlockState();
-            if (state.is(BlockTags.REDSTONE_ORES)) return ModBlocks.INFESTED_REDSTONE_ORE.defaultBlockState();
-        }
         return null;
     }
 

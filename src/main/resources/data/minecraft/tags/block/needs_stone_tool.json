@@ -1,7 +1,4 @@
 {
   "replace": false,
-  "values": [
-    "alien-invasion:platinum_ore",
-    "alien-invasion:palladium_ore"
-  ]
+  "values": []
 }

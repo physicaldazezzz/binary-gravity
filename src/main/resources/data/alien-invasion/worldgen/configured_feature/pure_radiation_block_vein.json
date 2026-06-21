@@ -10,7 +10,7 @@
           "tag": "minecraft:stone_ore_replaceables"
         },
         "state": {
-          "Name": "alien-invasion:cosmic_crystal_ore"
+          "Name": "alien-invasion:pure_radiation_block"
         }
       },
       {
@@ -19,7 +19,7 @@
           "tag": "minecraft:deepslate_ore_replaceables"
         },
         "state": {
-          "Name": "alien-invasion:cosmic_crystal_ore"
+          "Name": "alien-invasion:pure_radiation_block"
         }
       }
     ]

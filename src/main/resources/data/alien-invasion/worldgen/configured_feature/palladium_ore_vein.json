@@ -1,7 +1,7 @@
 {
   "type": "minecraft:ore",
   "config": {
-    "size": 4,
+    "size": 8,
     "discard_chance_on_air_exposure": 0.0,
     "targets": [
       {
@@ -10,7 +10,7 @@
           "tag": "minecraft:stone_ore_replaceables"
         },
         "state": {
-          "Name": "alien-invasion:cosmic_crystal_ore"
+          "Name": "alien-invasion:palladium_ore"
         }
       },
       {
@@ -19,7 +19,7 @@
           "tag": "minecraft:deepslate_ore_replaceables"
         },
         "state": {
-          "Name": "alien-invasion:cosmic_crystal_ore"
+          "Name": "alien-invasion:palladium_ore"
         }
       }
     ]

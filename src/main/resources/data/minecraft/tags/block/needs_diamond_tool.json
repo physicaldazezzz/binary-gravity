@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "alien-invasion:dark_matter_ore"
+    "alien-invasion:dark_matter_ore",
+    "alien-invasion:platinum_ore",
+    "alien-invasion:palladium_ore"
   ]
 }

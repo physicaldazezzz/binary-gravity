@@ -1,8 +1,6 @@
 {
   "replace": false,
   "values": [
-    "alien-invasion:platinum_ore",
-    "alien-invasion:palladium_ore",
     "alien-invasion:palladium_block",
     "alien-invasion:platinum_block",
     "alien-invasion:infested_diamond_ore",
