@@ -30,6 +30,9 @@ import com.example.alieninvasion.item.AlienHazmatArmorMaterial;
 import com.example.alieninvasion.item.AlienChemArmorMaterial;
 import com.example.alieninvasion.item.PlatinumArmorMaterial;
 import com.example.alieninvasion.item.PalladiumArmorMaterial;
+import com.example.alieninvasion.item.PiercerRapierItem;
+import com.example.alieninvasion.item.DevastatorAxeItem;
+import com.example.alieninvasion.item.ReaperScytheItem;
 
 public class ItemRegistry {
 
@@ -447,6 +450,18 @@ public class ItemRegistry {
     // Баллон воздуха: ПКМ заправляет запас воздуха герметичной маски (для ядовитых зон).
     public static final Item AIR_CANISTER = registerItem("air_canister",
             new com.example.alieninvasion.item.AirCanisterItem(new Item.Properties().stacksTo(16)));
+
+    public static final Item PIERCER_RAPIER = registerItem("piercer_rapier",
+            new PiercerRapierItem(ModToolTiers.EMERAD_RAD,
+                    new Item.Properties().rarity(Rarity.EPIC).fireResistant().attributes(SwordItem.createAttributes(ModToolTiers.EMERAD_RAD, 3, -2.2F))));
+
+    public static final Item DEVASTATOR_AXE = registerItem("devastator_axe",
+            new DevastatorAxeItem(ModToolTiers.EMERAD_RAD,
+                    new Item.Properties().rarity(Rarity.EPIC).fireResistant().attributes(AxeItem.createAttributes(ModToolTiers.EMERAD_RAD, 5.5F, -3.0F))));
+
+    public static final Item REAPER_SCYTHE = registerItem("reaper_scythe",
+            new ReaperScytheItem(ModToolTiers.EMERAD_RAD,
+                    new Item.Properties().rarity(Rarity.EPIC).fireResistant().attributes(HoeItem.createAttributes(ModToolTiers.EMERAD_RAD, 4.0F, -2.8F))));
 
     public static final Item CONTAMINATED_FOOD = registerItem("contaminated_food",
             new com.example.alieninvasion.item.ContaminatedFoodItem(new Item.Properties().stacksTo(16)

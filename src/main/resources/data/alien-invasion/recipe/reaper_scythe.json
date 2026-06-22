@@ -1,0 +1,16 @@
+{
+  "type": "alien-invasion:palladium_anvil",
+  "catalyst": {
+    "item": "alien-invasion:radiation_crystal"
+  },
+  "base": {
+    "item": "alien-invasion:platinum_hoe"
+  },
+  "addition": {
+    "item": "alien-invasion:emeradium_ingot"
+  },
+  "result": {
+    "id": "alien-invasion:reaper_scythe",
+    "count": 1
+  }
+}

@@ -11,7 +11,8 @@ import net.minecraft.world.level.block.Block;
 public enum ModToolTiers implements Tier {
     PLATINUM(1561, 6.0F, 2.0F, 14),
     PALLADIUM(250,  8.0F, 3.0F, 10),
-    NIBIRIUM(2031,  9.0F, 4.0F, 15);
+    NIBIRIUM(2031,  9.0F, 4.0F, 15),
+    EMERAD_RAD(2200, 9.5F, 4.5F, 18);
 
     private final int uses;
     private final float speed;
@@ -36,6 +37,7 @@ public enum ModToolTiers implements Tier {
             case NIBIRIUM -> TagKey.create(
                     net.minecraft.core.registries.Registries.BLOCK,
                     net.minecraft.resources.ResourceLocation.fromNamespaceAndPath(AlienInvasionMod.MODID, "incorrect_for_nibirium_tool"));
+            case EMERAD_RAD -> BlockTags.INCORRECT_FOR_DIAMOND_TOOL;
         };
     }
     @Override public int getEnchantmentValue() { return enchantmentValue; }
@@ -46,6 +48,7 @@ public enum ModToolTiers implements Tier {
             case PLATINUM  -> Ingredient.of(ItemRegistry.PLATINUM_INGOT);
             case PALLADIUM -> Ingredient.of(ItemRegistry.PALLADIUM_INGOT);
             case NIBIRIUM  -> Ingredient.of(ItemRegistry.NIBIRIUM_INGOT);
+            case EMERAD_RAD -> Ingredient.of(ItemRegistry.EMERADIUM_INGOT);
         };
     }
 }

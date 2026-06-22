@@ -1120,7 +1120,7 @@ public class ModEvents {
                         ItemRegistry.ASTRAL_PRISM_HELMET, ItemRegistry.ASTRAL_PRISM_CHESTPLATE,
                         ItemRegistry.ASTRAL_PRISM_LEGGINGS, ItemRegistry.ASTRAL_PRISM_BOOTS);
 
-                // Dose multiplier: chem(×5 slower) > hazmat(×3 slower) > platinum/emeradium(×2 slower) > default
+                // Dose multiplier: chem(×10 slower) = hazmat(×10 slower) > platinum/emeradium(×2 slower) > default
                 // ANY armor shields a little - even a shirt stops some fallout.
                 // Per piece: helmet 3%, chest 5%, legs 4%, boots 3% => a full set of
                 // ANY armor (even leather) blocks 15%. Dedicated suits still rule.
@@ -1129,11 +1129,10 @@ public class ModEvents {
                 if (!player.getItemBySlot(EquipmentSlot.CHEST).isEmpty()) anyArmorShield += 0.05F;
                 if (!player.getItemBySlot(EquipmentSlot.LEGS).isEmpty())  anyArmorShield += 0.04F;
                 if (!player.getItemBySlot(EquipmentSlot.FEET).isEmpty())  anyArmorShield += 0.03F;
-                float doseMult = fullChem ? 0.2F : fullHazmat ? (1.0F / 3.0F) : (fullPlatinum || fullEmeradium) ? 0.5F
+                float doseMult = fullChem ? 0.1F : fullHazmat ? 0.1F : (fullPlatinum || fullEmeradium) ? 0.5F
                         : (1.0F - anyArmorShield);
-                // Броня НИКАК не влияет на ЗАРАЖЕНИЕ — от заражения защищает ТОЛЬКО МАСКА.
-                // (Раньше chem/hazmat/palladium замедляли шкалу — убрано по просьбе.)
-                float meterMult = 1.0F;
+                // Химзащита и химдоспех замедляют шкалу заражения в 10 раз.
+                float meterMult = (fullChem || fullHazmat) ? 0.1F : 1.0F;
                 com.example.alieninvasion.logic.RadiationManager.setDoseMultiplier(player, doseMult);
                 com.example.alieninvasion.logic.InfectionManager.setMeterMultiplier(player, meterMult);
                 if (fullPlatinum) {
