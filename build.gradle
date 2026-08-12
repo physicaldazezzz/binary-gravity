@@ -32,7 +32,7 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	// JEI integration
-	compileOnly "mezz.jei:jei-1.21.1-fabric-api:19.8.5.118"
+	compileOnly "mezz.jei:jei-1.21.1-fabric-api:19.43.0.394"
 	// TEMP (dev preview): disabled — JEI accessWidener crashes named dev runtime. Restore before release.
 	// localRuntime "mezz.jei:jei-1.21.1-fabric:19.8.5.118"
 }
